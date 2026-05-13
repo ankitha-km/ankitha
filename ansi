@@ -1,0 +1,51 @@
+# =====================================================
+# PROGRAM: Configuration Management using Ansible
+# PLATFORM: Ubuntu Linux
+# =====================================================
+
+# Step 1: Create a new user named ansible
+sudo adduser ansible
+
+# Step 2: Give sudo (administrator) privileges to ansible user
+sudo usermod -aG sudo ansible
+
+# Step 3: Switch to ansible user
+sudo su - ansible
+
+# Step 4: Generate SSH public and private keys
+ssh-keygen
+
+# Step 5: Update Ubuntu package repository
+sudo apt update
+
+# Step 6: Install Ansible package
+sudo apt install ansible -y
+
+# Step 7: Verify Ansible installation
+ansible --version
+
+# Step 8: Create Ansible configuration directory
+sudo mkdir -p /etc/ansible
+
+# Step 9: Create inventory(hosts) file
+sudo sh -c 'echo "[local]" > /etc/ansible/hosts'
+sudo sh -c 'echo "localhost ansible_connection=local" >> /etc/ansible/hosts'
+
+# Step 10: Display inventory details
+ansible-inventory --list -y
+
+# Step 11: Test connection
+ansible all -m ping
+
+
+hostname -i
+ssh-copy-id ansible@189.74.0.81
+yes
+
+
+
+
+
+
+
+
